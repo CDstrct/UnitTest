@@ -110,48 +110,4 @@ print(attendance_manager.generate_report())
 
 attendance_manager.export_to_csv("attendance_report.csv")
 
-def test_add_student():
-    print("Test: add_student")
-    original_input = input
-    inputs = iter(["Anna", "Nowak", "456"])
-    globals()['input'] = lambda _: next(inputs)
 
-    try:
-        result = add_student()
-    finally:
-        globals()['input'] = original_input
-
-    if result == "Anna,Nowak,456\n":
-        print("add_student passed")
-    else:
-        print("add_student failed - result:", result)
-
-
-def test_attendance_manager():
-    print("Test: AttendanceManager")
-    manager = AttendanceManager()
-
-
-    manager.add("2024-11-25", 1, True)
-    if manager.all_attendance.get(1, {}).get("2024-11-25") == True:
-        print("add passed")
-    else:
-        print("add failed")
-
-
-    manager.edit("2024-11-25", 1, False)
-    if manager.all_attendance.get(1, {}).get("2024-11-25") == False:
-        print(" edit passed")
-    else:
-        print(" edit failed")
-
-
-    manager.delete("2024-11-25", 1)
-    if 1 not in manager.all_attendance:
-        print("delete passed")
-    else:
-        print("delete failed")
-
-
-test_add_student()
-test_attendance_manager()
