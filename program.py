@@ -5,14 +5,10 @@ def manage_student_file(name,surname,student_id):
     file_name = "list.txt"
     file_exists = os.path.isfile(path)
 
-    if file_exists:
-        choice = input(f"The file {path} already exists. Do you want to add a new student? (yes/no): ")
-        if choice != 'yes':
-            print("Operation terminated.")
-            return
-    else:
+    if file_exists == False:
+ 
         print(f"The file {file_name} does not exist. A new file will be created.")
-
+    student = f"{name},{surname},{student_id}\n"
     with open(file_name, mode='a') as file:
         if not file_exists:
             file.write("First Name,Last Name,ID\n")
