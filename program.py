@@ -13,15 +13,6 @@ def manage_student_file(name,surname,student_id):
     else:
         print(f"The file {file_name} does not exist. A new file will be created.")
 
-    student = f"{name},{surname},{student_id}\n"
-
-    with open(file_name, mode='a') as file:
-        if not file_exists:
-            file.write("First Name,Last Name,ID\n")
-        file.write(student)
-
-    print(f"The student was successfully added to the file {path}.")
-
     with open(file_name, mode='a') as file:
         if not file_exists:
             file.write("First Name,Last Name,ID\n")
