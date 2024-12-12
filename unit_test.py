@@ -1,4 +1,5 @@
 import pytest
+import os
 from program import AttendanceManager,manage_student_file,AttendanceChecker
 
 def test_file_path(tmp_path):
