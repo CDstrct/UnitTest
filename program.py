@@ -15,18 +15,14 @@ class AttendanceChecker:
     def __init__(self, manager):
         self.manager = manager
 
-    def check_in(self, date, user_id, status):
-        status_bool = status.lower() == "true"
-        if user_id in self.manager.all_attendance:
+      def check_in(self, date, user_id, status):
+    
+        if user_id in self.manager.all_attendance and date in self.manager.all_attendance[user_id]:
             print(f"Attendance record found for user {user_id} on {date}.")
-            self.manager.edit(date, user_id, status_bool)
-
-            new_status = input("Enter new attendance status (True for present, False for absent): ").strip().lower() == 'true'
-            self.manager.edit(date, user_id, new_status)
+            self.manager.edit(date, user_id, status == "true")
         else:
             print(f"No attendance record found for user {user_id} on {date}.")
-            new_status = input("Enter attendance status (True for present, False for absent): ").strip().lower() == 'true'
-            self.manager.add(date, user_id, new_status)
+            self.manager.add(date, user_id, status == "true")
 
 class AttendanceManager:
     def __init__(self):
