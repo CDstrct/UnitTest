@@ -28,7 +28,7 @@ def test_append_to_existing_file(test_file_path):
     
     assert lines == [
         "First Name,Last Name,ID\n",
-        "Nme,aSrnme,67890\n",
+        "Nme,Srnme,67890\n",
         "Jan,Kowalski,54321\n"
     ]
 class MockManager:
