@@ -53,8 +53,16 @@ def attendance_checker(mock_manager):
     from program import AttendanceChecker 
     return AttendanceChecker(mock_manager)
 
+@pytest.fixture
+def mock_input(monkeypatch):
+    def mock_input_function(prompt):
+        if "attendance status" in prompt:
+            return "true"  
+        return "false"  
+    monkeypatch.setattr("builtins.input", mock_input_function)
+
 def test_add_new_attendance(attendance_checker, mock_manager, mock_input):
-    # Now no manual input is needed as it is mocked
+   
     attendance_checker.check_in("2023-12-01", "user1", "true")
 
     assert "user1" in mock_manager.all_attendance
