@@ -1,6 +1,6 @@
 import os
 
-def manage_student_file(name,surname,student_id):
+def manage_student_file(name,surname,student_id,path):
     path = "/lista/list.txt"
     file_name = "list.txt"
     file_exists = os.path.isfile(path)
