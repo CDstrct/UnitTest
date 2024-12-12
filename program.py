@@ -12,16 +12,21 @@ def manage_student_file(first_name, last_name, student_id, path):
     # Part 3: Attendance Checker
 
 class AttendanceChecker:
-  def check_in(self, date, user_id, status):
+    def __init__(self, manager):
+        self.manager = manager
+
+    def check_in(self, date, user_id, status):
         status_bool = status.lower() == "true"
-           
-        if user_id in self.manager.all_attendance and date in self.manager.all_attendance[user_id]:
+        if user_id in self.manager.all_attendance:
             print(f"Attendance record found for user {user_id} on {date}.")
             self.manager.edit(date, user_id, status_bool)
+
+            new_status = input("Enter new attendance status (True for present, False for absent): ").strip().lower() == 'true'
+            self.manager.edit(date, user_id, new_status)
         else:
             print(f"No attendance record found for user {user_id} on {date}.")
-            self.manager.add(date, user_id, status_bool)
-
+            new_status = input("Enter attendance status (True for present, False for absent): ").strip().lower() == 'true'
+            self.manager.add(date, user_id, new_status)
 
 class AttendanceManager:
     def __init__(self):
