@@ -1,21 +1,14 @@
 import os
 
-def manage_student_file(name,surname,student_id,path):
-    path = "/lista/list.txt"
-    file_name = "list.txt"
-    file_exists = os.path.isfile(path)
-
-    if file_exists == False:
- 
-        print(f"The file {file_name} does not exist. A new file will be created.")
-    student = f"{name},{surname},{student_id}\n"
-    with open(file_name, mode='a') as file:
-        if not file_exists:
+def manage_student_file(first_name, last_name, student_id, path):
+    directory = os.path.dirname(path)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    if not os.path.isfile(path):
+        with open(path, 'w') as file:
             file.write("First Name,Last Name,ID\n")
-        file.write(student)
-
-    print(f"The student was successfully added to the file {path}.")
-
+    with open(path, 'a') as file:
+        file.write(f"{first_name},{last_name},{student_id}\n")
     # Part 3: Attendance Checker
 
 class AttendanceChecker:
