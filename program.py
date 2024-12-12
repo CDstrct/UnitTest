@@ -15,14 +15,14 @@ class AttendanceChecker:
     def __init__(self, manager):
         self.manager = manager
 
-      def check_in(self, date, user_id, status):
+    def check_in(self, date, user_id, status):
     
-        if user_id in self.manager.all_attendance and date in self.manager.all_attendance[user_id]:
-            print(f"Attendance record found for user {user_id} on {date}.")
-            self.manager.edit(date, user_id, status == "true")
-        else:
-            print(f"No attendance record found for user {user_id} on {date}.")
-            self.manager.add(date, user_id, status == "true")
+     if user_id in self.manager.all_attendance and date in self.manager.all_attendance[user_id]:
+        print(f"Attendance record found for user {user_id} on {date}.")
+        self.manager.edit(date, user_id, status == "true")
+     else:
+        print(f"No attendance record found for user {user_id} on {date}.")
+        self.manager.add(date, user_id, status == "true")
 
 class AttendanceManager:
     def __init__(self):
