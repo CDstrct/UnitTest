@@ -5,8 +5,7 @@ from program import AttendanceManager,manage_student_file,AttendanceChecker
 @pytest.fixture
 def test_file_path(tmp_path):
 
-    return tmp_path / "list.txt"
-    
+    return tmp_path / "list.txt"  
 
 def test_create_new_file(test_file_path):
     manage_student_file("Jan", "Kowalski", 12345, path=str(test_file_path))
