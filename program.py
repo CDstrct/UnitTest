@@ -17,8 +17,8 @@ class AttendanceChecker:
 
     def check_in(self, date, user_id, status):
 
-    status_bool = status.lower() == "true"
-    self.manager.add(date, user_id, status_bool)
+     status_bool = status.lower() == "true"
+     self.manager.add(date, user_id, status_bool)
 
             new_status = input("Enter new attendance status (True for present, False for absent): ").strip().lower() == 'true'
             self.manager.edit(date, user_id, new_status)
