@@ -51,7 +51,7 @@ def mock_manager():
 @pytest.fixture
 def attendance_checker(mock_manager):
     from program import AttendanceChecker 
-      return AttendanceChecker(mock_manager)
+    return AttendanceChecker(mock_manager)
 
 def test_add_new_attendance(attendance_checker, mock_manager):
     attendance_checker.check_in("2023-12-01", "user1", "true")
