@@ -2,6 +2,7 @@ import pytest
 import os
 from program import AttendanceManager,manage_student_file,AttendanceChecker
 
+@pytest.fixture
 def test_file_path(tmp_path):
 
     return tmp_path / "list.txt"
@@ -63,18 +64,18 @@ def test_update_existing_attendance(attendance_checker, mock_manager):
 
     attendance_checker.check_in("2023-12-01", "user1", "false")
 
-    assert mock_manager.all_attendance["user1"]["2023-12-01"] is False
+    assert mock_manager.all_attendance["user1"]["2023-12-01"] == False
 
 def test_no_existing_record(attendance_checker, mock_manager):
     attendance_checker.check_in("2023-12-02", "user2", "false")
     assert "user2" in mock_manager.all_attendance
     assert "2023-12-02" in mock_manager.all_attendance["user2"]
-    assert mock_manager.all_attendance["user2"]["2023-12-02"] is False
+    assert mock_manager.all_attendance["user2"]["2023-12-02"] == False
 
 def test_preserve_existing_unchanged(attendance_checker, mock_manager):
     mock_manager.add("2023-12-01", "user3", True)
     attendance_checker.check_in("2023-12-01", "user3", "true")
-    assert mock_manager.all_attendance["user3"]["2023-12-01"] is True
+    assert mock_manager.all_attendance["user3"]["2023-12-01"] == True
 
 import csv
 
@@ -84,14 +85,14 @@ def test_add_attendance():
 
     assert 1 in manager.all_attendance
     assert "2024-12-01" in manager.all_attendance[1]
-    assert manager.all_attendance[1]["2024-12-01"] is True
+    assert manager.all_attendance[1]["2024-12-01"] == True
 
 def test_edit_attendance():
     manager = AttendanceManager()
     manager.add("2024-12-01", 1, True)
     manager.edit("2024-12-01", 1, False)
 
-    assert manager.all_attendance[1]["2024-12-01"] is False
+    assert manager.all_attendance[1]["2024-12-01"] == False
 
 def test_edit_nonexistent_attendance():
     manager = AttendanceManager()
