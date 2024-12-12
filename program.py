@@ -15,11 +15,10 @@ class AttendanceChecker:
     def __init__(self, manager):
         self.manager = manager
 
-    def check_in(self, date, user_id):
-        """Check attendance for a given user and date, with editing if attendance already exists."""
-        if user_id in self.manager.all_attendance and date in self.manager.all_attendance[user_id]:
-            current_status = self.manager.all_attendance[user_id][date]
-            print(f"User {user_id} has already been marked as {'Present' if current_status else 'Absent'} on {date}.")
+     def check_in(self, date, user_id, status):
+
+        status_bool = status.lower() == "true"
+        self.manager.add(date, user_id, status_bool)
 
             new_status = input("Enter new attendance status (True for present, False for absent): ").strip().lower() == 'true'
             self.manager.edit(date, user_id, new_status)
