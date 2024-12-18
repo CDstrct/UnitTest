@@ -1,7 +1,11 @@
 import os
+import datetime
+import csv
 
 
 # TODO test test
+
+
 def manage_student_file(first_name, last_name, student_id, path):
     directory = os.path.dirname(path)
     if not os.path.exists(directory):
@@ -11,12 +15,12 @@ def manage_student_file(first_name, last_name, student_id, path):
             file.write("First Name,Last Name,ID\n")
     with open(path, "a") as file:
         file.write(f"{first_name},{last_name},{student_id}\n")
-    # Part 3: Attendance Checker
 
 
 class AttendanceChecker:
     def __init__(self, manager):
         self.manager = manager
+        
 
     def check_in(self, date, user_id, status):
 
@@ -66,7 +70,7 @@ class AttendanceManager:
         return report
 
     def export_to_csv(self, filename):
-        import csv
+        
 
         with open(filename, mode="w", newline="") as file:
             writer = csv.writer(file)
@@ -77,7 +81,7 @@ class AttendanceManager:
         print(f"Attendance data exported to file {filename}.")
 
 
-import datetime
+
 
 today_date = datetime.date.today().isoformat()
 
@@ -92,7 +96,5 @@ attendance_manager.add(date=today_date, user_id=2, was=False)
 attendance_manager.delete(date=today_date, user_id=2)
 
 print(attendance_manager.generate_report())
-# TODO: idk abcde 123
-
 
 attendance_manager.export_to_csv("attendance_report.csv")
