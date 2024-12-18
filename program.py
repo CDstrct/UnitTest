@@ -1,29 +1,35 @@
 import os
 
+
 # TODO test test
 def manage_student_file(first_name, last_name, student_id, path):
     directory = os.path.dirname(path)
     if not os.path.exists(directory):
         os.makedirs(directory)
     if not os.path.isfile(path):
-        with open(path, 'w') as file:
+        with open(path, "w") as file:
             file.write("First Name,Last Name,ID\n")
-    with open(path, 'a') as file:
+    with open(path, "a") as file:
         file.write(f"{first_name},{last_name},{student_id}\n")
     # Part 3: Attendance Checker
+
 
 class AttendanceChecker:
     def __init__(self, manager):
         self.manager = manager
 
     def check_in(self, date, user_id, status):
-    
-     if user_id in self.manager.all_attendance and date in self.manager.all_attendance[user_id]:
-        print(f"Attendance record found for user {user_id} on {date}.")
-        self.manager.edit(date, user_id, status == "true")
-     else:
-        print(f"No attendance record found for user {user_id} on {date}.")
-        self.manager.add(date, user_id, status == "true")
+
+        if (
+            user_id in self.manager.all_attendance
+            and date in self.manager.all_attendance[user_id]
+        ):
+            print(f"Attendance record found for user {user_id} on {date}.")
+            self.manager.edit(date, user_id, status == "true")
+        else:
+            print(f"No attendance record found for user {user_id} on {date}.")
+            self.manager.add(date, user_id, status == "true")
+
 
 class AttendanceManager:
     def __init__(self):
@@ -38,7 +44,9 @@ class AttendanceManager:
     def edit(self, date, user_id, was):
         if user_id in self.all_attendance and date in self.all_attendance[user_id]:
             self.all_attendance[user_id][date] = was
-            print(f"User with id {user_id} on {date} attendance status updated to {was}.")
+            print(
+                f"User with id {user_id} on {date} attendance status updated to {was}."
+            )
         else:
             print(f"No entry found for user with id {user_id} on {date}.")
 
@@ -59,13 +67,15 @@ class AttendanceManager:
 
     def export_to_csv(self, filename):
         import csv
-        with open(filename, mode='w', newline='') as file:
+
+        with open(filename, mode="w", newline="") as file:
             writer = csv.writer(file)
             writer.writerow(["User ID", "Date", "Status"])
             for user_id, dates in self.all_attendance.items():
                 for date, status in dates.items():
                     writer.writerow([user_id, date, status])
         print(f"Attendance data exported to file {filename}.")
+
 
 import datetime
 
@@ -86,5 +96,3 @@ print(attendance_manager.generate_report())
 
 
 attendance_manager.export_to_csv("attendance_report.csv")
-
-
