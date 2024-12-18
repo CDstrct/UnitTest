@@ -20,7 +20,6 @@ def manage_student_file(first_name, last_name, student_id, path):
 class AttendanceChecker:
     def __init__(self, manager):
         self.manager = manager
-        
 
     def check_in(self, date, user_id, status):
 
@@ -70,7 +69,6 @@ class AttendanceManager:
         return report
 
     def export_to_csv(self, filename):
-        
 
         with open(filename, mode="w", newline="") as file:
             writer = csv.writer(file)
@@ -79,8 +77,6 @@ class AttendanceManager:
                 for date, status in dates.items():
                     writer.writerow([user_id, date, status])
         print(f"Attendance data exported to file {filename}.")
-
-
 
 
 today_date = datetime.date.today().isoformat()
