@@ -102,8 +102,6 @@ def test_preserve_existing_unchanged(attendance_checker, mock_manager, mock_inpu
     assert mock_manager.all_attendance["user3"]["2023-12-01"] is True
 
 
-
-
 def test_add_attendance():
     manager = AttendanceManager()
     manager.add("2024-12-01", 1, True)
