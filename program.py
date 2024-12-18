@@ -1,5 +1,6 @@
 import os
 
+
 def manage_student_file(first_name, last_name, student_id, path):
     directory = os.path.dirname(path)
     if not os.path.exists(directory):
