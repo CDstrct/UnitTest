@@ -18,4 +18,4 @@ jobs:
       - name: Run TODO to Issue Action
         uses: alstr/todo-to-issue-action@v5
         with:
-           IDENTIFIERS: "TODO,FIXME,NOTE"
+           IDENTIFIERS: "TODO"
