@@ -105,7 +105,6 @@ def test_preserve_existing_unchanged(attendance_checker, mock_manager, mock_inpu
 def test_add_attendance():
     manager = AttendanceManager()
     manager.add("2024-12-01", 1, True)
-
     assert 1 in manager.all_attendance
     assert "2024-12-01" in manager.all_attendance[1]
     assert manager.all_attendance[1]["2024-12-01"] is True
@@ -115,14 +114,12 @@ def test_edit_attendance():
     manager = AttendanceManager()
     manager.add("2024-12-01", 1, True)
     manager.edit("2024-12-01", 1, False)
-
     assert manager.all_attendance[1]["2024-12-01"] is False
 
 
 def test_edit_nonexistent_attendance():
     manager = AttendanceManager()
     manager.edit("2024-12-01", 1, False)
-
     assert 1 not in manager.all_attendance
 
 
@@ -130,14 +127,12 @@ def test_delete_attendance():
     manager = AttendanceManager()
     manager.add("2024-12-01", 1, True)
     manager.delete("2024-12-01", 1)
-
     assert "2024-12-01" not in manager.all_attendance[1]
 
 
 def test_delete_nonexistent_attendance():
     manager = AttendanceManager()
     manager.delete("2024-12-01", 1)
-
     assert 1 not in manager.all_attendance
 
 
