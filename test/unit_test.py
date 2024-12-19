@@ -1,7 +1,6 @@
 import pytest
 import os
 import csv
-import sys
 from program import AttendanceManager, manage_student_file
 
 
