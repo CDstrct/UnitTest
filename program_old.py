@@ -1,3 +1,4 @@
+'''
 import os
 import datetime
 import csv
@@ -87,3 +88,4 @@ attendance_manager.add(date=today_date, user_id=2, was=False)
 attendance_manager.delete(date=today_date, user_id=2)
 print(attendance_manager.generate_report())
 attendance_manager.export_to_csv("attendance_report.csv")
+'''
