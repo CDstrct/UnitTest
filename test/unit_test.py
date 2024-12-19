@@ -1,7 +1,7 @@
 import pytest
 import os
 import csv
-from program import AttendanceManager, manage_student_file
+from srs/program import AttendanceManager, manage_student_file
 
 
 @pytest.fixture
