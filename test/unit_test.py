@@ -2,9 +2,6 @@ import pytest
 import os
 import csv
 import sys
-
-sys.path.append(os.path.abspath("../srs"))
-
 from program import AttendanceManager, manage_student_file
 
 
