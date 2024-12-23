@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name="program",
+    name="program2137312",
     version="0.1.0",
     py_modules=["program"], 
     package_dir={"": "src"}, 
