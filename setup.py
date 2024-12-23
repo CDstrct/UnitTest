@@ -1,10 +1,11 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
-    name="test_program2137abcd",
+    name="program",
     version="0.1.0",
-    packages=find_packages(),
+    py_modules=["program"], 
+    package_dir={"": "src"}, 
     python_requires=">=3.7",
-    description="abcd",
-    url="https://github.com/CDstrct/UnitTest/tree/main/src",
+    description="asdfbn222",
+    url="https://github.com/CDstrct/UnitTest",  
 )
